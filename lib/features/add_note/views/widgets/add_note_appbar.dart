@@ -1,0 +1,45 @@
+import 'package:flutter/material.dart';
+import '../../../../core/widgets/custom_icon_button.dart';
+
+class AddNoteAppBar extends StatelessWidget {
+  const AddNoteAppBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 8, bottom: 16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          CustomIconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios_outlined,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          const Spacer(),
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.red,
+              border: Border.all(color: Colors.white),
+              borderRadius: BorderRadius.circular(16),
+            ),
+          ),
+          const SizedBox(width: 16),
+          CustomIconButton(
+            icon: const Icon(
+              Icons.palette_outlined,
+              color: Colors.white,
+            ),
+            onPressed: () {},
+          ),
+        ],
+      ),
+    );
+  }
+}

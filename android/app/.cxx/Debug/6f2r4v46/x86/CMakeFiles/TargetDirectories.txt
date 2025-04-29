@@ -1,0 +1,2 @@
+/home/duhhh/Documents/GitHub/notes/android/app/.cxx/Debug/6f2r4v46/x86/CMakeFiles/edit_cache.dir
+/home/duhhh/Documents/GitHub/notes/android/app/.cxx/Debug/6f2r4v46/x86/CMakeFiles/rebuild_cache.dir
