@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/blocs/notes_cubit.dart';
+import '../../../../core/cubits/notes_cubit.dart';
 import '../../../../core/models/note_model.dart';
 
 Future<bool?> showDeleteDialog(BuildContext context, NoteModel note) {

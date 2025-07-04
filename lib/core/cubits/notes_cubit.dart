@@ -12,6 +12,10 @@ class NotesCubit extends Cubit<NotesState> {
     notesRepo.getNotes().fold(
       (error) => emit(GetNotesFailure(error)),
       (notes) {
+        if (notes.isEmpty) {
+          emit(NotesEmpty());
+          return;
+        }
         emit(GetNotesSuccess(notes));
       },
     );

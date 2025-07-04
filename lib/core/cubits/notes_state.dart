@@ -15,6 +15,8 @@ final class GetNotesFailure extends NotesState {
   GetNotesFailure(this.error);
 }
 
+final class NotesEmpty extends NotesState {}
+
 final class AddNoteSuccess extends NotesState {}
 
 final class AddNoteFailure extends NotesState {

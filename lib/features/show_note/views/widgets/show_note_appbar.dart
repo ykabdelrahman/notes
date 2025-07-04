@@ -22,10 +22,10 @@ class ShowNoteAppBar extends StatelessWidget {
           ),
           const Spacer(),
           Container(
-            width: 50,
-            height: 50,
+            width: 45,
+            height: 45,
             decoration: BoxDecoration(
-              color: Colors.red,
+              color: Colors.blueAccent,
               border: Border.all(color: Colors.white),
               borderRadius: BorderRadius.circular(16),
             ),

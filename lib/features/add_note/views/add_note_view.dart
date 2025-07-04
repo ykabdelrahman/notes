@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:notes/core/models/note_model.dart';
 import 'package:notes/core/widgets/custom_text_field.dart';
-import '../../../core/blocs/notes_cubit.dart';
+import '../../../core/cubits/notes_cubit.dart';
+import '../../../core/theme/custom_colors.dart';
 import 'widgets/add_note_appbar.dart';
 
 class AddNoteView extends StatefulWidget {
@@ -49,6 +51,7 @@ class _AddNoteViewState extends State<AddNoteView> {
                         hint: 'Title',
                         controller: titleController,
                         autoFocus: true,
+                        maxLines: 1,
                         textStyle: const TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.w500,
@@ -59,6 +62,7 @@ class _AddNoteViewState extends State<AddNoteView> {
                       CustomTextFormField(
                         hint: 'Type something...',
                         controller: bodyController,
+                        isLastInput: true,
                         textStyle: const TextStyle(
                           fontSize: 20,
                           color: Colors.white,
@@ -85,9 +89,10 @@ class _AddNoteViewState extends State<AddNoteView> {
               color: Colors.lightBlueAccent.toARGB32(),
             );
             context.read<NotesCubit>().addNote(notemodel);
-            Navigator.pop(context);
+            context.pop();
           }
         },
+        backgroundColor: CustomColors.darkGrey,
         label: const Text('Save'),
         icon: const Icon(Icons.save),
       ),

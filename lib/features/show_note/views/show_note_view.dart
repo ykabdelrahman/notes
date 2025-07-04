@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notes/core/blocs/notes_cubit.dart';
+import 'package:notes/core/cubits/notes_cubit.dart';
 import 'package:notes/core/models/note_model.dart';
 import 'package:notes/core/widgets/custom_text_field.dart';
+import '../../../core/theme/custom_colors.dart';
 import 'widgets/show_note_appbar.dart';
 
 class ShowNoteView extends StatefulWidget {
-  const ShowNoteView({super.key});
+  const ShowNoteView({super.key, required this.note});
+  final NoteModel note;
 
   @override
   State<ShowNoteView> createState() => _ShowNoteViewState();
@@ -18,9 +20,9 @@ class _ShowNoteViewState extends State<ShowNoteView> {
 
   @override
   void initState() {
-    titleController = TextEditingController();
-    bodyController = TextEditingController();
     super.initState();
+    titleController = TextEditingController(text: widget.note.title);
+    bodyController = TextEditingController(text: widget.note.body);
   }
 
   @override
@@ -32,10 +34,6 @@ class _ShowNoteViewState extends State<ShowNoteView> {
 
   @override
   Widget build(BuildContext context) {
-    NoteModel note =
-        (ModalRoute.of(context)?.settings.arguments as Map)['note'];
-    titleController.text = note.title;
-    bodyController.text = note.body;
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -61,6 +59,7 @@ class _ShowNoteViewState extends State<ShowNoteView> {
                       CustomTextFormField(
                         hint: 'Type something...',
                         controller: bodyController,
+                        isLastInput: true,
                         textStyle: const TextStyle(
                           fontSize: 20,
                           color: Colors.white,
@@ -76,12 +75,13 @@ class _ShowNoteViewState extends State<ShowNoteView> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          note.title = titleController.text;
-          note.body = bodyController.text;
-          note.save();
+          widget.note.title = titleController.text;
+          widget.note.body = bodyController.text;
+          widget.note.save();
           context.read<NotesCubit>().getNotes();
           Navigator.pop(context);
         },
+        backgroundColor: CustomColors.darkGrey,
         label: const Text('Save'),
         icon: const Icon(Icons.save),
       ),

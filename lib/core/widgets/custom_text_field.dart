@@ -8,12 +8,16 @@ class CustomTextFormField extends StatelessWidget {
     this.controller,
     this.textStyle,
     this.autoFocus = false,
+    this.maxLines,
+    this.isLastInput = false,
   });
   final String? hint;
   final bool autoFocus;
   final Function(String)? onChanged;
   final TextEditingController? controller;
   final TextStyle? textStyle;
+  final int? maxLines;
+  final bool isLastInput;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,10 @@ class CustomTextFormField extends StatelessWidget {
       keyboardType: TextInputType.multiline,
       textCapitalization: TextCapitalization.sentences,
       style: textStyle,
-      maxLines: null,
+      maxLines: maxLines,
+      cursorColor: Colors.white,
+      textInputAction:
+          isLastInput ? TextInputAction.done : TextInputAction.next,
       decoration: InputDecoration.collapsed(
         hintText: hint,
       ),

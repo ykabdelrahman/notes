@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../utils/constants.dart';
+import '../theme/custom_colors.dart';
 
 class CustomIconButton extends StatelessWidget {
   const CustomIconButton({
@@ -12,10 +12,10 @@ class CustomIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
-      width: 50,
+      height: 45,
+      width: 45,
       decoration: BoxDecoration(
-        color: CustomColors.lightGrey,
+        color: CustomColors.darkGrey,
         borderRadius: BorderRadius.circular(16),
       ),
       child: IconButton(

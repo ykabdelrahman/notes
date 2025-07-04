@@ -1,19 +1,18 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:notes/core/models/note_model.dart';
 import 'notes_repo.dart';
 
 class NotesRepoImpl implements NotesRepo {
-  List<NoteModel> notes = [];
-
   @override
   Either<String, List<NoteModel>> getNotes() {
     try {
       var noteBox = Hive.box<NoteModel>('notes');
-      notes = noteBox.values.toList();
-
-      return Right(notes);
+      return Right(noteBox.values.toList());
     } catch (e) {
+      log(e.toString());
       return const Left('Failed to get notes');
     }
   }

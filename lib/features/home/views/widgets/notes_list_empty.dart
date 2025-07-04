@@ -5,17 +5,21 @@ class NotesListEmpty extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(
-          height: MediaQuery.of(context).size.height / 3,
-        ),
-        const Text(
-          'Create your first note!',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 22,
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Create your first note!',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 22,
+              ),
+            ),
+          ],
         ),
       ],
     );
