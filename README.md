@@ -13,8 +13,8 @@ To run this project on your local machine:
 
 ```bash
 # Clone the repo
-git clone https://github.com/ykabdelrahman/nootes.git
-cd your-repo-name
+git clone https://github.com/ykabdelrahman/notes.git
+cd notes
 
 # Get dependencies
 flutter pub get
